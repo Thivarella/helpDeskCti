@@ -1,6 +1,14 @@
 <?php
 require('../database/base.php');
-
+session_start();
+if(isset($_GET['logout'])){
+    if($_GET['logout'] == true){
+        logout();
+    }
+}
+if($_SESSION['user'] == null){
+    header('Location:../login/login.php');
+}
 function getSalas(){
     $sql = "SELECT * FROM salas";
     $conexao = conectar();
@@ -28,13 +36,18 @@ function getStatusOrTipo($table){
     }
 }
 
+function logout(){
+    unset($_SESSION['user']);
+    header('Location:../login/login.php');
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $status = $_POST["inputStatus"];
     $tipo = $_POST["inputTipo"];
     $sala = $_POST["inputSala"];
     $descricao = $_POST["inputDescricao"];
-    $solicitante = $_POST["inputSolicitante"];
+    $solicitante = $_SESSION['user']['id'];
     $dataChamado = $_POST["inputDatachamado"];
 
     $sql = "INSERT INTO chamado (status_id, tipo_id, sala_id, descricao, solicitante_id, data_abertura) VALUES ('$status', '$tipo', '$sala', '$descricao', '$solicitante', '$dataChamado')";

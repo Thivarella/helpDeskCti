@@ -18,6 +18,10 @@
 </head>
 <body>
 <?php
+    session_start();
+    if($_SESSION['user'] == null){
+        header('Location:../login/login.php');
+    }
     require "homeCtrl.php";
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,7 +53,7 @@
                      width="28" height="28" alt=""> Nome Usuario
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Sair</a>
+                <a href="homeCtrl.php?logout=true" class="dropdown-item">Sair</a>
             </div>
         </div>
     </div>
