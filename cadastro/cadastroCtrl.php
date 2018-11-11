@@ -25,5 +25,7 @@
         $conexao = conectar();
 
         executar_SQL($conexao,$sql);
+
+        header("Location:../login/login.php");
     }
 ?>

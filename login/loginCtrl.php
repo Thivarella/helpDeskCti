@@ -11,7 +11,7 @@
         $count = executar_SQL($conexao,$sql);
         if(verifica_resultado($count)<=0){
         }else{
-            header("Location:../chamado/chamado.php");
+            header("Location:../home/homeUser.php");
         }
     }
 ?>
