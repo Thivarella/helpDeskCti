@@ -1,8 +1,8 @@
 <?php
-
-    require('../database/base.php');
+    session_start();
+    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        session_start();
+        require('../database/base.php');
         $email = utf8_encode($_POST["inputEmail"]);
         $senha = $_POST["inputPassword"];
 
@@ -13,7 +13,7 @@
         if(verifica_resultado($count)<=0){
         }else{
             $_SESSION['user'] = retorna_linha($count);
-            header("Location:../home/homeUser.php");
+            header("Location: ../");
         }
     }
 ?>

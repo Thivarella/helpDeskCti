@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../assets/css/css.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/css.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title></title>
@@ -15,14 +15,19 @@
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
 
+            <title>HelpDesk - Aluno</title>
+
 </head>
 <body>
 <?php
-    session_start();
+    //session_start();
     if($_SESSION['user'] == null){
-        header('Location:../login/login.php');
+        header('Location: ../login/login.php');
     }
     require "homeCtrl.php";
+
+    $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
@@ -50,10 +55,10 @@
             <a class="text-white dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
                 <img src="http://www.sixsigmahospital.com/wp-content/uploads/2018/04/person-icon-257x300.png"
-                     width="28" height="28" alt=""> Nome Usuario
+                     width="28" height="28" alt=""> <?php echo $user['nome']; ?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="homeCtrl.php?logout=true" class="dropdown-item">Sair</a>
+                <a href="?logout=true" class="dropdown-item">Sair</a>
             </div>
         </div>
     </div>

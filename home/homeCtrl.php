@@ -1,13 +1,13 @@
 <?php
-require('../database/base.php');
-session_start();
+require('database/base.php');
+//session_start();
 if(isset($_GET['logout'])){
     if($_GET['logout'] == true){
         logout();
     }
 }
 if($_SESSION['user'] == null){
-    header('Location:../login/login.php');
+    header('Location: login/login.php');
 }
 function getSalas(){
     $sql = "SELECT * FROM salas";
@@ -38,7 +38,7 @@ function getStatusOrTipo($table){
 
 function logout(){
     unset($_SESSION['user']);
-    header('Location:../login/login.php');
+    header('Location: login/login.php');
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){

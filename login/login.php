@@ -12,7 +12,9 @@
     <title></title>
 </head>
 <body class="text-center">
+
 <form action="loginCtrl.php" method="post" class="form-signin">
+    
     <h1 class="h3 mb-3 font-weight-normal">Help Desk CTI</h1>
     <input type="email" id="inputEmail" name="inputEmail" class="form-control mb-2" placeholder="voce@perfil.ifsp.edu.br" required="" autofocus="">
     <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Senha" required="">
