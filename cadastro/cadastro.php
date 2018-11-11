@@ -10,18 +10,29 @@
 
     <link rel="stylesheet" href="../assets/css/login.css">
     <title></title>
+
 </head>
 <body class="text-center">
-<form class="form-signin">
+<form action="cadastroCtrl.php" method="post" class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Help Desk CTI</h1>
-    <label for="inputEmail" class="sr-only">E-mail</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="voce@perfil.ifsp.edu.br" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Senha</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required="">
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-    <p class="mt-5 mb-3 text-muted">IFSP - DSW1 (Grupo 6)©</p>
-</form>
+    <input type="text" id="inputNome" name="inputNome" class="form-control mb-2" placeholder="Nome completo" required="" autofocus="">
+    <input type="text" id="inputRa" name="inputRa" class="form-control mb-2" placeholder="RA" required="">
+    <input type="email" id="inputEmail" name="inputEmail" class="form-control mb-2" placeholder="voce@perfil.ifsp.edu.br" required="">
+    <select id="inputPerfil" name="inputPerfil" class="form-control mb-2" required="">
+        <option>Selecione</option>
+        <?php
+            require('../cadastro/cadastroCtrl.php');
+            getPerfil()
+        ?>
+    </select>
+    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Senha" required="">
+    <button class="mb-60 btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+    <a class="text-primary" href="../login/login.php">voltar ao login</a>
 
+</form>
+<div class="container-fluid footerCti border-top">
+    <p class="mt-4 mb-4 text-muted">IFSP - DSW1 (Grupo 6)©</p>
+</div>
 </body>
 
 <footer>
