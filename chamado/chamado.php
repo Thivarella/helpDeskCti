@@ -3,7 +3,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -11,7 +11,9 @@
     <title>Chamado</title>
 </head>
 <body>
-
+<?php
+    include "chamadoCtrl.php"
+?>
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="https://s.yimg.com/ny/api/res/1.2/sr0S8XICX40u13yfFMUBJQ--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/http://globalfinance.zenfs.com/en_us/Finance/US_AFTP_PRNEWSWIRE_LIVE/CTI_Industries_Corporation_Board_Approves-c0e544bd85f0b2c1867a6857f49701c5" width="50" height="50" class="d-inline-block align-center" alt="">
@@ -22,31 +24,49 @@
 <div class=" bg-primary">
     <div class="container bg-white rounded ">
         <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3 ">
+                    RA
+                    <input class="form-control" type="text" placeholder="RA">
+                </div>
+                <div class="col-sm">
+                    Email
+                    <input type="email" class="form-control" id="email_usuario" aria-describedby="emailHelp" placeholder="Email">
+                </div>
+            </div>
             <div class="row mt-4">
-                <div class="col-sm-4 mt-4">
+                <div class="col-md-6 mt-4">
                     Numero do Chamado
                     <input class="form-control" type="text" placeholder="Numero do chamado">
                 </div>
-                <div class="col-sm-2 mt-4">
+                <div class="col-md-2 mt-4">
                     Sala
                     <label for="sala"></label>
                     <select class="form-control" id="sala">
-                        <option>C109</option>
-                        <option>C106</option>
-                        <option>C105</option>
-                        <option>C104</option>
-                        <option>C103</option>
+                        <option>Selecione</option>
+                        <?php
+                            getSalas();
+                        ?>
                     </select>
                 </div>
-                <div class="col-sm mt-4">
+                <div class="col-md-2 mt-4">
+                    Tipo
+                    <label for="tipo"></label>
+                    <select class="form-control" id="tipo">
+                        <option>Selecione</option>
+                        <?php
+                            getStatusOrTipo("tipo");
+                        ?>
+                    </select>
+                </div>
+                <div class="col-md-2 mt-4">
                     Status
                     <label for="status"></label>
                     <select class="form-control" id="status">
-                        <option>Aberto</option>
-                        <option>Em trabalho</option>
-                        <option>Resolvido</option>
-                        <option>Reaberto</option>
-                        <option>Encerrado</option>
+                        <option>Selecione</option>
+                        <?php
+                            getStatusOrTipo("status");
+                        ?>
                     </select>
                 </div>
             </div>
@@ -59,19 +79,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm">
+                <div class="col-md">
                     Solicitante
                     <input class="form-control" type="text" placeholder="Nome">
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3 ">
-                    RA
-                    <input class="form-control" type="text" placeholder="RA">
-                </div>
-                <div class="col-sm">
-                    Email
-                    <input type="email" class="form-control" id="email_usuario" aria-describedby="emailHelp" placeholder="Email">
+                <div class="col-md">
+                    Técnico
+                    <input class="form-control" type="text" placeholder="Nome">
                 </div>
             </div>
             <div class="row mt-3">
