@@ -77,11 +77,11 @@
                         <div class="row">
                             <div class="col-md-3">
                                 RA
-                                <input id="inputRa" name="inputRa" class="form-control" type="text" placeholder="RA">
+                                <input id="inputRa" name="inputRa" class="form-control" type="text" placeholder="RA" disabled>
                             </div>
                             <div class="col-md-6">
                                 Email
-                                <input id="inputEmail" name="inputEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                                <input id="inputEmail" name="inputEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" disabled>
                             </div>
                             <div class="col-md">
                                 Status
@@ -97,7 +97,7 @@
                         <div class="row mt-4">
                             <div class="col-md-4">
                                 Numero do Chamado
-                                <input id="inputChamado" name="inputChamado" class="form-control" type="text" placeholder="Numero do chamado">
+                                <input id="inputChamado" name="inputChamado" class="form-control" type="text" placeholder="Número do chamado" disabled>
                             </div>
                             <div class="col-md-5">
                                 Sala
@@ -141,11 +141,11 @@
                         <div class="row mt-3">
                             <div class="col-sm">
                                 Data do chamado
-                                <input class="form-control" id="inputDatachamado" name="inputDatachamado" type="date">
+                                <input class="form-control" id="inputDatachamado" name="inputDatachamado" type="date" disabled>
                             </div>
                             <div class="col-sm">
                                 Data finalização
-                                <input class="form-control" id="inputDatafinal" name="inputDatafinal" type="date">
+                                <input class="form-control" id="inputDatafinal" name="inputDatafinal" type="date" disabled>
                             </div>
                         </div>
                     </div>
@@ -158,5 +158,6 @@
         </div>
     </div>
 </div>
+<script src="../assets/js/homeUser.js"></script>
 </body>
 </html>
