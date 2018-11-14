@@ -20,9 +20,9 @@
 </head>
 <body>
 <?php
-    //session_start();
+    session_start();
     if($_SESSION['user'] == null){
-        header('Location: ../login/login.php');
+        header('Location: login.php');
     }
     require "homeCtrl.php";
 
@@ -90,7 +90,7 @@
                 <h4 class="modal-title">Chamado</h4>
                 <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form action="home/homeCtrlPost.php" onsubmit="habiliteToSend()" method="post">
+            <form action="homeCtrlPost.php" onsubmit="habiliteToSend()" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="row">

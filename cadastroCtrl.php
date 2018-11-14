@@ -1,5 +1,5 @@
 <?php
-    require('../database/base.php');
+    require('base.php');
 
     function getPerfil(){
         $sql = "SELECT * FROM perfil_usuario";
@@ -28,6 +28,6 @@
 
         executar_SQL($conexao, $sql);
 
-        header("Location:../login/login.php");
+        header("Location:login.php");
     }
 ?>

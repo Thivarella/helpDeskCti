@@ -1,6 +1,6 @@
 <?php
-require('database/base.php');
-//session_start();
+require('base.php');
+session_start();
 
 if(isset($_GET['logout'])){
     if($_GET['logout'] == true){
@@ -8,7 +8,7 @@ if(isset($_GET['logout'])){
     }
 }
 if($_SESSION['user'] == null){
-    header('Location: login/login.php');
+    header('Location: login.php');
 }
 
 function getSalas(){
@@ -41,7 +41,7 @@ function getStatusOrTipo($table){
 
 function logout(){
     unset($_SESSION['user']);
-    header('Location: login/login.php');
+    header('Location: login.php');
 }
 
 function getNovosChamadosOrEmAndamento($id){
