@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-
+    <script src="assets/js/homeUser.js"></script>
             <title>HelpDesk - Aluno</title>
 
 </head>
@@ -39,16 +39,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: left">
         <ul class="navbar-nav mr-auto">
-
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Em andamento</a>
-            </li>
-
-            <li class="nav-item text-white">
-                <a class="nav-link text-white" href="#">Resolvidos</a>
-            </li>
 
         </ul>
         <div class="dropdown">
@@ -63,7 +55,34 @@
         </div>
     </div>
 </nav>
-<btn data-toggle="modal" data-target="#modalChamado" class="fab"> +</btn>
+<div class="container-fluid">
+    <div class="row col-md-12">
+        <div class="col-md-4 mt-2">
+            <fieldset>
+                <legend>Novos</legend>
+                <?php
+                    getNovosChamadosOrEmAndamento(1);
+                ?>
+            </fieldset>
+        </div>
+        <div class="col-md-4 mt-2">
+            <fieldset>
+                <legend>Em andamento</legend>
+                <?php
+                    getNovosChamadosOrEmAndamento(3);
+                ?>
+            </fieldset>
+        </div>
+        <div class="col-md-4 mt-2">
+            <fieldset><legend>Finalizados</legend>
+                <?php
+                    getChamadosFinalizados();
+                ?>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<btn class="fab" onclick='openModal(<?php echo json_encode($user) ?>,null)'> +</btn>
 <div class="modal fade" data-backdrop="static" id="modalChamado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" style="max-width: 60%;" role="document">
         <div class="modal-content">
@@ -71,7 +90,7 @@
                 <h4 class="modal-title">Chamado</h4>
                 <button class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <form action="homeCtrl.php" method="post">
+            <form action="home/homeCtrlPost.php" onsubmit="habiliteToSend()" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <div class="row">
@@ -131,11 +150,11 @@
                         <div class="row">
                             <div class="col-md">
                                 Solicitante
-                                <input id="inputSolicitante" name="inputSolicitante" class="form-control" type="text" placeholder="Nome">
+                                <input id="inputSolicitante" name="inputSolicitante" class="form-control" type="text" placeholder="Nome" disabled>
                             </div>
                             <div class="col-md">
                                 Técnico
-                                <input id="inputTecnico" name="inputTecnico" class="form-control" type="text" placeholder="Nome">
+                                <input id="inputTecnico" name="inputTecnico" class="form-control" type="text" placeholder="">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -158,6 +177,5 @@
         </div>
     </div>
 </div>
-<script src="../assets/js/homeUser.js"></script>
 </body>
 </html>

@@ -29,7 +29,7 @@ function desconectar($conexao){
 }
 
 // Executa uma consulta e retorna o resultado, se houver
-function executar_SQL($conexao,$SQL){
+function executar_SQL($conexao, $SQL){
 
     $resultado = mysqli_query($conexao, $SQL);
 

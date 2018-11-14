@@ -1,6 +1,7 @@
 <?php
 require('database/base.php');
 //session_start();
+
 if(isset($_GET['logout'])){
     if($_GET['logout'] == true){
         logout();
@@ -9,11 +10,13 @@ if(isset($_GET['logout'])){
 if($_SESSION['user'] == null){
     header('Location: login/login.php');
 }
+
 function getSalas(){
     $sql = "SELECT * FROM salas";
+
     $conexao = conectar();
 
-    $select = executar_SQL($conexao,$sql);
+    $select = executar_SQL($conexao, $sql);
 
     if(verifica_resultado($select)>0){
         foreach ($select as $res) {
@@ -27,7 +30,7 @@ function getStatusOrTipo($table){
 
     $conexao = conectar();
 
-    $select = executar_SQL($conexao,$sql);
+    $select = executar_SQL($conexao, $sql);
 
     if(verifica_resultado($select)>0){
         foreach ($select as $res) {
@@ -41,20 +44,59 @@ function logout(){
     header('Location: login/login.php');
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+function getNovosChamadosOrEmAndamento($id){
+    $sql = "SELECT * FROM chamado WHERE status_id = $id";
 
-    $status = $_POST["inputStatus"];
-    $tipo = $_POST["inputTipo"];
-    $sala = $_POST["inputSala"];
-    $descricao = $_POST["inputDescricao"];
-    $solicitante = $_SESSION['user']['id'];
-    $dataChamado = $_POST["inputDatachamado"];
-
-    $sql = "INSERT INTO chamado (status_id, tipo_id, sala_id, descricao, solicitante_id, data_abertura) VALUES ('$status', '$tipo', '$sala', '$descricao', '$solicitante', '$dataChamado')";
     $conexao = conectar();
 
-    executar_SQL($conexao,$sql);
+    $select = executar_SQL($conexao, $sql);
 
-    header("Location:homeUser.php");
+    if(verifica_resultado($select)>0) {
+        renderCard($select);
+    }
 }
+
+function getChamadosFinalizados(){
+    $sql = "SELECT * FROM chamado WHERE status_id <> 1 AND status_id <> 3";
+
+    $conexao = conectar();
+
+    $select = executar_SQL($conexao, $sql);
+
+    if(verifica_resultado($select)>0) {
+        renderCard($select);
+    }
+}
+
+function renderCard($select){
+    foreach ($select as $res) {
+        $res['tipo_id'] = getById('tipo',$res['tipo_id']);
+        $res['status_id'] = getById('status',$res['status_id']);
+        $res['solicitante_id'] = getById('usuario',$res['solicitante_id']);
+        $res['sala_id'] = getById('salas',$res['sala_id']);
+        if($res['tecnico_id'] != null){
+            $res['tecnico_id'] = getById('usuario',$res['tecnico_id']);
+        }
+
+        echo "<div class='card text-white bg-info mb-3 mt-2' style='width: 18rem;'>";
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title text-white'>".$res['tipo_id']['descricao']."</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-white'>STATUS - ".$res['status_id']['descricao']."</h6>";
+        echo "<p class='card-text'>".$res['descricao']."</p>";
+        echo "<a href='#' class='btn btn-light' onclick='openModal(".json_encode($_SESSION['user']).",".json_encode($res).")'>Ver mais</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+}
+
+function getById($table,$id){
+    $sql = "SELECT * FROM $table WHERE id = $id";
+
+    $conexao = conectar();
+
+    $select = executar_SQL($conexao, $sql);
+
+    return retorna_linha($select);
+}
+
 ?>

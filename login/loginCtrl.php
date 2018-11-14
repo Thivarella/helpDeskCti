@@ -7,9 +7,10 @@
         $senha = $_POST["inputPassword"];
 
         $sql = "SELECT * FROM usuario WHERE email LIKE '$email' AND senha LIKE '$senha'";
+
         $conexao = conectar();
 
-        $count = executar_SQL($conexao,$sql);
+        $count = executar_SQL($conexao, $sql);
         if(verifica_resultado($count)<=0){
         }else{
             $_SESSION['user'] = retorna_linha($count);
