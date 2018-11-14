@@ -17,6 +17,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $tecnico = $_SESSION['user']['id'];
 
         $sql = "UPDATE chamado SET status_id=$status, tecnico_id=$tecnico WHERE id = $chamado";
+        if($_POST['inputDatafinal'] != "" || $_POST['inputDatafinal'] != null){
+            $dataFinal = $_POST['inputDatafinal'];
+            $sql = "UPDATE chamado SET status_id=$status, tecnico_id=$tecnico, data_resolucao = '$dataFinal' WHERE id = $chamado";
+        }
     }
 
     $conexao = conectar();

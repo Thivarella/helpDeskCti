@@ -18,17 +18,29 @@ function openModal(user,chamado){
         $('#inputDescricao').val("").prop( "disabled", false );
         $('#inputTecnico').val("").prop( "disabled", true );
         $('#inputDatachamado').val(today());
+        $('#realizarInsert').text("Abrir Chamado").prop( "disabled", false );
+        $('#inputDatafinal').val("").prop( "disabled", true );
     }else{
         $('#inputChamado').val(chamado.id);
         $('#inputRa').val(chamado.solicitante_id.ra);
         $('#inputEmail').val(chamado.solicitante_id.email);
-        $('#inputStatus').val(chamado.status_id.id).prop( "disabled", false );
+        if(user.is_cti == 1){
+            $('#inputStatus').val(chamado.status_id.id).prop( "disabled", false );
+            $('#realizarInsert').text("Atualizar Chamado");
+        }else{
+            $('#inputStatus').val(chamado.status_id.id).prop( "disabled", true );
+            $('#realizarInsert').text("Aguardando...").prop( "disabled", true );
+        }
         $('#inputTipo').val(chamado.tipo_id.id).prop( "disabled", true );
         $('#inputSala').val(chamado.sala_id.id).prop( "disabled", true );
         $('#inputDescricao').val(chamado.descricao).prop( "disabled", true );
         $('#inputSolicitante').val(chamado.solicitante_id.nome);
         $('#inputTecnico').val(chamado.tecnico_id != null?chamado.tecnico_id.nome:user.nome).prop( "disabled", true );
         $('#inputDatachamado').val(chamado.data_abertura);
+        $('#inputDatafinal').val("").prop( "disabled", true );
+        if(chamado.status_id.id != 1 && chamado.status_id.id != 3 ){
+            $('#inputDatafinal').val(chamado.data_resolucao).prop( "disabled", true );
+        }
     }
 }
 
@@ -43,4 +55,7 @@ function habiliteToSend() {
     $('#inputDescricao').prop( "disabled", false );
     $('#inputTecnico').prop( "disabled", false );
     $('#inputDatachamado').prop( "disabled", false );
+    if($('#inputStatus').val()!= 1 && $('#inputStatus').val()!= 3 ){
+        $('#inputDatafinal').val(today()).prop( "disabled", false );
+    }
 }

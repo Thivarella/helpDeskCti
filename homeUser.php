@@ -56,16 +56,18 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row col-md-12">
-        <div class="col-md-4 mt-2">
-            <fieldset>
-                <legend>Novos</legend>
-                <?php
+    <div class="row col-md">
+        <?php
+            if($user['is_cti'] == 1) {
+                echo '<div class="col-md mt-2">';
+                echo "<fieldset>";
+                echo "<legend>Novos</legend>";
                     getNovosChamadosOrEmAndamento(1);
-                ?>
-            </fieldset>
-        </div>
-        <div class="col-md-4 mt-2">
+                echo "</fieldset>";
+                echo "</div>";
+            }
+        ?>
+        <div class="col-md mt-2">
             <fieldset>
                 <legend>Em andamento</legend>
                 <?php
@@ -73,7 +75,7 @@
                 ?>
             </fieldset>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md mt-2">
             <fieldset><legend>Finalizados</legend>
                 <?php
                     getChamadosFinalizados();
@@ -171,7 +173,7 @@
                 </div>
                 <div class="modal-footer">
                         <button class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-primary">Abrir Chamado</button>
+                        <button type="submit" id="realizarInsert" class="btn btn-primary">Abrir Chamado</button>
                 </div>
             </form>
         </div>
