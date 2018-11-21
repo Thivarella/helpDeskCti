@@ -10,6 +10,4 @@ if (isset($request)) {
 if (isset($_GET['logout']) && $_GET['logout'] == 'true' ){
 	require 'homeUser.php';
 }
-
-
 ?>

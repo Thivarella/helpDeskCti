@@ -82,7 +82,7 @@ function renderCard($select){
         echo "<div class='card-body'>";
         echo "<h5 class='card-title text-white'>".$res['tipo_id']['descricao']."</h5>";
         echo "<h6 class='card-subtitle mb-2 text-white'>STATUS - ".$res['status_id']['descricao']."</h6>";
-        echo "<p class='card-text'>".$res['descricao']."</p>";
+        echo "<p class='card-text'> Descrição - ".$res['descricao']."</p>";
         echo "<a href='#' class='btn btn-light' onclick='openModal(".json_encode($_SESSION['user']).",".json_encode($res).")'>Ver mais</a>";
         echo "</div>";
         echo "</div>";
