@@ -1,0 +1,77 @@
+CREATE TABLE IF NOT EXISTS tipo (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	descricao VARCHAR(255) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+INSERT INTO tipo (descricao) VALUES ('HARDWARE'),('MOBILIARIO'),('REDE'),('SOFTWARE'),('OUTROS');
+
+CREATE TABLE IF NOT EXISTS status (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	descricao VARCHAR(255) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+INSERT INTO status (descricao) VALUES ('ABERTO'),('CANCELADO'),('ENCERRADO'),('REABERTO'),('RESOLVIDO');
+
+CREATE TABLE IF NOT EXISTS perfil_usuario (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	perfil VARCHAR(255) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+INSERT INTO perfil_usuario (perfil) VALUES ('ALUNO'),('PROFESSOR'),('FUNCIONARIO');
+
+CREATE TABLE IF NOT EXISTS salas (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	sala VARCHAR(255) NOT NULL,
+   	PRIMARY KEY (id)) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS usuario (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	nome VARCHAR(255) NOT NULL,
+	ra VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	perfil_id BIGINT NOT NULL,
+    	senha VARCHAR(255) NOT NULL,
+    	is_cti BOOLEAN NOT NULL,
+  	PRIMARY KEY (id),
+   	FOREIGN KEY (perfil_id) REFERENCES perfil_usuario(id)) ENGINE = InnoDB;
+
+
+
+CREATE TABLE IF NOT EXISTS chamado (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	status_id BIGINT NOT NULL,
+	tipo_id BIGINT NOT NULL,
+	sala_id BIGINT NOT NULL,
+    descricao VARCHAR(280) NOT NULL,
+    solicitante_id BIGINT NOT NULL,
+    tecnico_id BIGINT DEFAULT NULL,
+    data_abertura DATE,
+    data_resolucao DATE,
+    id_prioridade BIGINT,
+  	PRIMARY KEY (id),
+   	FOREIGN KEY (status_id) REFERENCES status(id),
+	FOREIGN KEY (tipo_id) REFERENCES tipo(id),
+	FOREIGN KEY (sala_id) REFERENCES salas(id),
+	FOREIGN KEY (solicitante_id) REFERENCES usuario(id),
+	FOREIGN KEY (tecnico_id) REFERENCES usuario(id),
+  FOREIGN KEY (id_prioridade) REFERENCES prioridade(id)) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS log_cahamdo (
+	id BIGINT NOT NULL AUTO_INCREMENT ,
+	descricao VARCHAR(255) NOT NULL ,
+    	date_log DATE,
+    	chamado_id BIGINT,
+    	PRIMARY KEY (id),
+	FOREIGN KEY (chamado_id) REFERENCES chamado(id)) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS esp_tecnico (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  id_usuario_tec BIGINT NOT NULL,
+  id_tipo BIGINT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_usuario_tec) REFERENCES usuario(id),
+  FOREIGN KEY (id_tipo) REFERENCES tipo(id)) ENGINE = InnoDB;
+
+  CREATE TABLE IF NOT EXISTS prioridade (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    descricao VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)) ENGINE = InnoDB;
