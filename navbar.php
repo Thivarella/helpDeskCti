@@ -1,4 +1,5 @@
 <?php
+require('base.php');
     session_start();
     if($_SESSION['user'] == null){
         header('Location: login.php');
@@ -16,16 +17,21 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: left">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="relatorio.php">Relatório <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" data-toggle="modal" data-target="#modalRegistrar">Registrar funcionário <span class="sr-only">(current)</span></a>
-            </li>
 
-        </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: left">
+        <?php
+                echo '<ul class="navbar-nav mr-auto">';
+            if($user.is_admin == 1) {
+                        echo '<li class="nav-item active">
+                            <a class="nav-link" href="relatorio.php">Relatório <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" data-toggle="modal" data-target="#modalRegistrar">Registrar funcionário <span class="sr-only">(current)</span></a>
+                        </li>';
+            
+            }
+                echo '</ul>';
+        ?>
         <div class="dropdown">
             <a class="text-white dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">

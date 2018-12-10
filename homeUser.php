@@ -55,7 +55,6 @@ require('navbar.php');?>
                             </div>
                             <div class="col-md">
                                 Status
-                                <label for="status"></label>
                                 <select class="form-control"  id="inputStatus" name="inputStatus">
                                     <option>Selecione</option>
                                     <?php
@@ -71,7 +70,6 @@ require('navbar.php');?>
                             </div>
                             <div class="col-md-5">
                                 Sala
-                                <label for="sala"></label>
                                 <select class="form-control" id="inputSala" name="inputSala">
                                     <option>Selecione</option>
                                     <?php
@@ -81,7 +79,6 @@ require('navbar.php');?>
                             </div>
                             <div class="col-md-3">
                                 Tipo
-                                <label for="tipo"></label>
                                 <select class="form-control" id="inputTipo" name="inputTipo">
                                     <option>Selecione</option>
                                     <?php
@@ -116,6 +113,15 @@ require('navbar.php');?>
                             <div class="col-sm">
                                 Data finalização
                                 <input class="form-control" id="inputDatafinal" name="inputDatafinal" type="date" disabled>
+                            </div>
+                            <div class="col-md-5">
+                                Prioridade
+                                <select class="form-control" id="inputPrioridade" name="inputPrioridade" required>
+                                    <option>Selecione</option>
+                                    <?php
+                                    getStatusOrTipo("prioridade");
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>

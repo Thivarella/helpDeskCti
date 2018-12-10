@@ -1,5 +1,5 @@
 <?php
-require('base.php');
+
 session_start();
 
 if(isset($_GET['logout'])){
@@ -45,7 +45,7 @@ function logout(){
 }
 
 function getNovosChamadosOrEmAndamento($user){
-    $sql = "SELECT * FROM chamado ORDER BY data_abertura DESC, status_id ASC";
+    $sql = "SELECT * FROM chamado ORDER BY data_abertura DESC, status_id ASC, id DESC";
 
     $conexao = conectar();
 

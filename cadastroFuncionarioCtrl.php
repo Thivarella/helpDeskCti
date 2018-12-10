@@ -1,9 +1,7 @@
 <?php
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    require_once ('base.php');
     $nome = $_POST["inputNome"];
     $ra = $_POST["inputRa"];
     $email = $_POST["inputEmail"];
@@ -32,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             executar_SQL($conexao, $sql);
         }
     }
+
+    header("Location: homeUser.php");
 }
 
 function getTipo()
