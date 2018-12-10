@@ -17,14 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     executar_SQL($conexao, $sql);
 
     $especialidade[] = ( isset($_POST["especialidade"]) ) ? $_POST["especialidade"] : null;
-    $especialidade[] = $_POST["especialidade"];
     console_log($especialidade);
-
     foreach ($especialidade as $value) {
         if($value != null) {
             console_log($value);
             $idUsuario = getIdByRa("usuario", $ra);
-            console_log($idUsuario);
 
             $ID = &$idUsuario['id'];
             $sql = "INSERT INTO esp_tecnico (id_usuario_tec, id_tipo) VALUES ('$ID', '$value')";
@@ -46,9 +43,9 @@ function getStatusOrTipo()
 
     if (verifica_resultado($select) > 0) {
         foreach ($select as $res) {
-            echo "<div class=\"form-check form-check-inline\">";
-            echo "<input class=\"form-check-input\" type=\"checkbox\" name=\"especialidade\" value=\"" . $res['id'] . "\" id=\" 'especialidade' \">";
-            echo "<label class=\"form-check-label\" for=\"especialidade\">";
+            echo "<div class='form-check form-check-inline'>";
+            echo "<input class='form-check-input' type='checkbox' name='especialidade[]' value='" . $res['id'] . "' id='especialidade'>";
+            echo "<label class='form-check-label' for='especialidade'>";
             echo utf8_encode($res['descricao']);
             echo "</label>";
             echo "</div>";
