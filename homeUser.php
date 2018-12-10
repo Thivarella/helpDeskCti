@@ -20,44 +20,17 @@
 </head>
 <body>
 <?php
-    session_start();
-    if($_SESSION['user'] == null){
-        header('Location: login.php');
-    }
-    require "homeCtrl.php";
-
-    $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-
+    echo '<div class="col-md-12 mt-header" style="display: inline-flex;text-align: center; border-bottom: 1px solid #313234; position: fixed; z-index: 2;background-color: white;border-width: initial;"><div class="col-md-2" style="margin-right: -20px">Chamado</div><div class="col-md-5" style="text-align: left;margin-right: -30px;padding-left: 4.57%;">Descrição</div><div class="col-md-2">Status</div><div class="col-md-2">Última atualização</div></div>';
 ?>
 <?php
 require('navbar.php');?>
 <div class="container-fluid">
     <div class="row col-md">
         <?php
-            if($user['is_cti'] == 1) {
-                echo '<div class="col-md mt-2">';
-                echo "<fieldset>";
-                echo "<legend>Novos</legend>";
-                    getNovosChamadosOrEmAndamento(1);
-                echo "</fieldset>";
-                echo "</div>";
-            }
+            echo '<div class="panel-group col-md-11 mt-panel" id="accordion">';
+            getNovosChamadosOrEmAndamento($user);
+            echo '</div>';
         ?>
-        <div class="col-md mt-2">
-            <fieldset>
-                <legend>Em andamento</legend>
-                <?php
-                    getNovosChamadosOrEmAndamento(3);
-                ?>
-            </fieldset>
-        </div>
-        <div class="col-md mt-2">
-            <fieldset><legend>Finalizados</legend>
-                <?php
-                    getChamadosFinalizados();
-                ?>
-            </fieldset>
-        </div>
     </div>
 </div>
 <btn class="fab" onclick='openModal(<?php echo json_encode($user) ?>,null)'> +</btn>

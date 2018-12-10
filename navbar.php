@@ -1,8 +1,3 @@
-<html>
-<head>
-  
-</head>
-<body>
 <?php
     session_start();
     if($_SESSION['user'] == null){
@@ -15,7 +10,6 @@
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="homeUser.php">
-        <!--<img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> !-->
         HelpDesk
     </a>
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,5 +35,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
