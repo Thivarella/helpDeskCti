@@ -1,5 +1,5 @@
 <?php
-require('base.php');
+
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,14 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     executar_SQL($conexao, $sql);
 
-    $especialidade[] = ( isset($_POST["especialidade"]) ) ? $_POST["especialidade"] : null;
+    $especialidade = ( isset($_POST["especialidade"]) ) ? $_POST["especialidade"] : null;
     console_log($especialidade);
     foreach ($especialidade as $value) {
         if($value != null) {
             console_log($value);
             $idUsuario = getIdByRa("usuario", $ra);
-
             $ID = &$idUsuario['id'];
+
+            console_log($value);
             $sql = "INSERT INTO esp_tecnico (id_usuario_tec, id_tipo) VALUES ('$ID', '$value')";
 
             $conexao = conectar();
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-function getStatusOrTipo()
+function getTipo()
 {
     $sql = "SELECT * FROM tipo";
 
