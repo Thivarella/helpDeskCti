@@ -1,3 +1,5 @@
+
+
 .fab {
     width: 74px;
     height: 74px;
@@ -18,4 +20,136 @@
 .fab:hover {
     box-shadow: 0 6px 14px 0 #666;
     transform: scale(1.05);
+}
+
+.text-over{
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.badge-blue{
+    background-color: #1E88E5;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.badge-red{
+    background-color: #E53935;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.badge-green{
+    background-color: #43A047;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.badge-grey{
+    background-color: #424242;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.badge-yellow{
+    background-color: #FFEB3B;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.badge-cyan{
+    background-color: #00fbff;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+}
+
+.btn-chamado{
+    padding: 6px 12px;
+    display: inline-flex;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    background-color: #ffffff;
+    user-select: none;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #313234;
+    width: 100%;
+}
+
+.btn-chamado > div {
+    margin-left: 10px;
+}
+
+.mt-header{
+    margin-top: 4.18%;
+}
+
+.mt-panel{
+    margin-top: 2.18%;
+    margin-bottom: 5%;
+}
+
+#solicitante{
+    border: 1px solid #8080804d;
+    padding: 5px;
+    border-radius: 4px;
+    margin: -5px;
+    margin-bottom: 15px;
+}
+#dadosChamado{
+    border: 1px solid #8080804d;
+    padding: 10px;
+    margin: -10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.text-description{
+    resize: none;
+    height: 100px !important;
+    margin-bottom: 10px;
+}
+
+.pl-20{
+    padding-left: 20px;
+}
+
+.prioridade-icone{
+    width: 10%;
+    position: absolute;
+    right: 12%;
+    top: 2%;
+}
+
+.fr{
+    float: right;
 }

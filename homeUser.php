@@ -20,68 +20,17 @@
 </head>
 <body>
 <?php
-    session_start();
-    if($_SESSION['user'] == null){
-        header('Location: login.php');
-    }
-    require "homeCtrl.php";
-
-    $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
-
+    echo '<div class="col-md-12 mt-header" style="display: inline-flex;text-align: center; border-bottom: 1px solid #313234; position: fixed; z-index: 2;background-color: white;border-width: initial;"><div class="col-md-2" style="margin-right: -20px">Chamado</div><div class="col-md-5" style="text-align: left;margin-right: -30px;padding-left: 4.57%;">Descrição</div><div class="col-md-2">Status</div><div class="col-md-2">Última atualização</div></div>';
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <!--<img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> !-->
-        HelpDesk
-    </a>
-    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: left">
-        <ul class="navbar-nav mr-auto">
-
-        </ul>
-        <div class="dropdown">
-            <a class="text-white dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-                <img src="http://www.sixsigmahospital.com/wp-content/uploads/2018/04/person-icon-257x300.png"
-                     width="28" height="28" alt=""> <?php echo $user['nome']; ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="?logout=true" class="dropdown-item">Sair</a>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php
+require('navbar.php');?>
 <div class="container-fluid">
     <div class="row col-md">
         <?php
-            if($user['is_cti'] == 1) {
-                echo '<div class="col-md mt-2">';
-                echo "<fieldset>";
-                echo "<legend>Novos</legend>";
-                    getNovosChamadosOrEmAndamento(1);
-                echo "</fieldset>";
-                echo "</div>";
-            }
+            echo '<div class="panel-group col-md-11 mt-panel" id="accordion">';
+            getNovosChamadosOrEmAndamento($user);
+            echo '</div>';
         ?>
-        <div class="col-md mt-2">
-            <fieldset>
-                <legend>Em andamento</legend>
-                <?php
-                    getNovosChamadosOrEmAndamento(3);
-                ?>
-            </fieldset>
-        </div>
-        <div class="col-md mt-2">
-            <fieldset><legend>Finalizados</legend>
-                <?php
-                    getChamadosFinalizados();
-                ?>
-            </fieldset>
-        </div>
     </div>
 </div>
 <btn class="fab" onclick='openModal(<?php echo json_encode($user) ?>,null)'> +</btn>

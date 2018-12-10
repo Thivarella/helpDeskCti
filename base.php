@@ -73,16 +73,19 @@ function valida_data($data){
 
 // Converte a data no formato aaaa-mm-dd para o formato dd/mm/aaaa
 function converte_data($data){
-    $dia = intval(substr($data, 8));
-    $mes = intval(substr($data, 5, 6));
-    $ano = intval(substr($data, 0, 4));
+    if($data != null){
+        $dia = intval(substr($data, 8));
+        $mes = intval(substr($data, 5, 6));
+        $ano = intval(substr($data, 0, 4));
 
-    if(strlen($dia) == 1)
-        $dia = "0" . $dia;
-    if(strlen($mes) == 1)
-        $mes = "0" . $mes;
+        if(strlen($dia) == 1)
+            $dia = "0" . $dia;
+        if(strlen($mes) == 1)
+            $mes = "0" . $mes;
 
-    return $dia . "/" . $mes . "/" . $ano;
+        return $dia . "/" . $mes . "/" . $ano;
+    }
+    return "";
 }
 
 // Recebe data e hora e retorna data convertida para o formato dd/mm/aaaa
