@@ -78,6 +78,7 @@ function renderCard($select,$user){
         if($res['tecnico_id'] != null){
             $res['tecnico_id'] = getById('usuario',$res['tecnico_id']);
         }
+        $res['id_prioridade']['descricao'] = utf8_encode($res['id_prioridade']['descricao']);
 
         echo '<div class="panel col-md-12">';
         echo '<div class="panel-heading  col-md-12">';
