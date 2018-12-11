@@ -61,11 +61,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         $chamado = $_POST['inputChamado'];
         $status = $_POST["inputStatus"];
+        $prioridade = $_POST["inputPrioridade"];
 
-        $sql = "UPDATE chamado SET status_id=$status WHERE id = $chamado";
+        $sql = "UPDATE chamado SET status_id=$status, id_prioridade=$prioridade  WHERE id = $chamado";
         if($_POST['inputDatafinal'] != "" || $_POST['inputDatafinal'] != null){
             $dataFinal = $_POST['inputDatafinal'];
-            $sql = "UPDATE chamado SET status_id=$status, tecnico_id=$tecnico, data_resolucao = '$dataFinal' WHERE id = $chamado";
+            $sql = "UPDATE chamado SET status_id=$status, id_prioridade=$prioridade, data_resolucao = '$dataFinal' WHERE id = $chamado";
         }
     }
 
@@ -75,5 +76,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     header("Location: homeUser.php");
 }
-
 ?>

@@ -45,7 +45,7 @@ function logout(){
 }
 
 function getNovosChamadosOrEmAndamento($user){
-    $sql = "SELECT * FROM chamado ORDER BY data_abertura DESC, status_id ASC, id DESC";
+    $sql = "SELECT * FROM chamado ORDER BY data_abertura DESC, status_id ASC, id_prioridade ASC, id DESC";
 
     $conexao = conectar();
 
@@ -110,13 +110,16 @@ function renderCard($select,$user){
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">Data do chamado: '.converte_data($res['data_abertura']).'</div>
-                                    <div class="col-md-6">Data da Finalização: '.converte_data($res['data_resolucao']).'</div>
+                                    <div class="col-md-6">Data da Finalização: '.converte_data($res['data_resolucao']). '</div>
                                 </div>
                             </div>
                         </form>
 
                         <div class="col-md-4">
-                            <div>Logs</div>
+                            <label for="logChamado">Histórico do chamado</label>
+                            <div id="logChamado" style="border: 1px solid #888275">
+                                
+                            </div>
                         </div>
                     </div>';
               if($user['is_cti'] == 1){

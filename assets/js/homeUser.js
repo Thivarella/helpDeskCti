@@ -20,15 +20,18 @@ function openModal(user,chamado){
         $('#inputDatachamado').val(today());
         $('#realizarInsert').text("Abrir Chamado").prop( "disabled", false );
         $('#inputDatafinal').val("").prop( "disabled", true );
+        $('#inputPrioridade').val('Selecione').prop( "disabled", false );
     }else{
         $('#inputChamado').val(chamado.id);
         $('#inputRa').val(chamado.solicitante_id.ra);
         $('#inputEmail').val(chamado.solicitante_id.email);
         if(user.is_cti == 1){
             $('#inputStatus').val(chamado.status_id.id).prop( "disabled", false );
+            $('#inputPrioridade').val(chamado.id_prioridade.id).prop( "disabled", false );
             $('#realizarInsert').text("Atualizar Chamado");
         }else{
             $('#inputStatus').val(chamado.status_id.id).prop( "disabled", true );
+            $('#inputPrioridade').val(chamado.id_prioridade.id).prop( "disabled", true );
             $('#realizarInsert').text("Aguardando...").prop( "disabled", true );
         }
         $('#inputTipo').val(chamado.tipo_id.id).prop( "disabled", true );
@@ -55,6 +58,7 @@ function habiliteToSend() {
     $('#inputDescricao').prop( "disabled", false );
     $('#inputTecnico').prop( "disabled", false );
     $('#inputDatachamado').prop( "disabled", false );
+    $('#inputPrioridade').prop( "disabled", false );
     if($('#inputStatus').val()!= 1 && $('#inputStatus').val()!= 3 ){
         $('#inputDatafinal').val(today()).prop( "disabled", false );
     }

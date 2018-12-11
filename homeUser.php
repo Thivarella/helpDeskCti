@@ -91,7 +91,7 @@ require('navbar.php');?>
                             <div class="col-md">
                                 <div class="form-group mt-2">
                                     <label for="descricao">Descricão</label>
-                                    <textarea class="form-control" id="inputDescricao" name="inputDescricao" rows="3"></textarea>
+                                    <textarea maxlength="280" class="form-control text-description" id="inputDescricao" name="inputDescricao" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -117,9 +117,9 @@ require('navbar.php');?>
                             <div class="col-md-5">
                                 Prioridade
                                 <select class="form-control" id="inputPrioridade" name="inputPrioridade" required>
-                                    <option>Selecione</option>
+                                    <option selected>Selecione</option>
                                     <?php
-                                    getStatusOrTipo("prioridade");
+                                        getStatusOrTipo("prioridade");
                                     ?>
                                 </select>
                             </div>

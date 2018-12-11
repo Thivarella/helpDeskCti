@@ -2,13 +2,13 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once ('base.php');
-    $nome = $_POST["inputNome"];
-    $ra = $_POST["inputRa"];
-    $email = $_POST["inputEmail"];
+    $nome = $_POST["inputNomeCadastro"];
+    $ra = $_POST["inputRaCadastro"];
+    $email = $_POST["inputEmailCadastro"];
     $tipo = 3;
-    $senha = $_POST["inputSenha"];
+    $senha = $_POST["inputSenhaCadastro"];
 
-    $sql = "INSERT INTO usuario (nome, ra, email, perfil_id, senha, is_cti) VALUES ('$nome', '$ra', '$email', '$tipo', '$senha', true)";
+    $sql = "INSERT INTO usuario (nome, ra, email, perfil_id, senha, is_cti, is_admin) VALUES ('$nome', '$ra', '$email', '$tipo', '$senha', true, false)";
 
     $conexao = conectar();
 

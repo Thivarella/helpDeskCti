@@ -8,7 +8,7 @@ require('base.php');
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav style="position:fixed;z-index: 2; width: 100%" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="homeUser.php">
         HelpDesk
     </a>
@@ -21,7 +21,7 @@ require('base.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: left">
         <?php
                 echo '<ul class="navbar-nav mr-auto">';
-            if($user.is_admin == 1) {
+            if($user['is_admin'] == 1) {
                         echo '<li class="nav-item active">
                             <a class="nav-link" href="relatorio.php">Relatório <span class="sr-only">(current)</span></a>
                         </li>
@@ -60,12 +60,12 @@ require('base.php');
                         <div class="row">
                             <div class="col-md-3">
                                 RA
-                                <input id="inputRa" name="inputRa" class="form-control" type="text"
+                                <input id="inputRaCadastro" name="inputRaCadastro" class="form-control" type="text"
                                        placeholder="RA">
                             </div>
                             <div class="col-md-9">
                                 Nome completo
-                                <input id="inputNome" name="inputNome" type="nome"
+                                <input id="inputNomeCadastro" name="inputNomeCadastro" type="nome"
                                        class="form-control"
                                        aria-describedby="nomeHelp" placeholder="Nome">
                             </div>
@@ -83,20 +83,20 @@ require('base.php');
                         <div class="row mt-3">
                             <div class="col-md-6">
                                 Email
-                                <input id="inputEmail" name="inputEmail" class="form-control"
+                                <input id="inputEmailCadastro" name="inputEmailCadastro" class="form-control"
                                        type="text"
                                        placeholder="Email">
                             </div>
                             <div class="col-md-3">
                                 Tipo
-                                <select class="form-control" id="inputTipo" name="inputTipo">
+                                <select class="form-control" id="inputTipoCadastro" name="inputTipoCadastro">
                                     <option>Funcionario</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 Senha
-                                <input id="inputSenha" name="inputSenha" class="form-control"
-                                       type="text"
+                                <input id="inputSenhaCadastro" name="inputSenhaCadastro" class="form-control"
+                                       type="password" autocomplete="off"
                                        placeholder="Senha">
                             </div>
                         </div>
@@ -104,7 +104,7 @@ require('base.php');
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="submit" id="realizarInsert" class="btn btn-primary">Cadastrar funcionário</button>
+                    <button type="submit" id="realizarInsertCadastro" class="btn btn-primary">Cadastrar funcionário</button>
                 </div>
             </form>
         </div>

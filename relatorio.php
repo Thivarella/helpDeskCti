@@ -41,7 +41,7 @@ function lista_chamado($sql){
 ?>
 
 <body>
-<form class="mb-0" action="relatorio.php" method="post">
+<form class="mb-0" style="position: fixed; top: 56px; width: 100%;" action="relatorio.php" method="post">
     <div class="input-group">
         <select class="custom-select" id="status" name="status" required>
             <?php
@@ -62,7 +62,7 @@ function lista_chamado($sql){
 </form>
 
 
-    <table class="table" style="table-layout: fixed;">
+    <table class="table" style="table-layout: fixed;position: fixed; table-layout: fixed;top: 14%;">
         <tr class="thead-dark">
             <th style="width: 100px;">Chamado</th>
             <th>Descricao</th>
